@@ -90,9 +90,7 @@
     "skip": "Skip to content",
     "menuOpen": "Open menu",
     "menuClose": "Close menu",
-    "home": "Home",
-    "cube": "Decorative 3D cube",
-    "process": "How we work"
+    "home": "Home"
   },
   "notFound": {
     "text": "Page not found",

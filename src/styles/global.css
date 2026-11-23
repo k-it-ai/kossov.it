@@ -13,7 +13,6 @@
   --color-brand-red-dark: #981a26;
   --color-night: #181818;
 
-  --animate-spin-slower: spin 6s linear infinite;
 }
 
 @layer base {
@@ -41,13 +40,6 @@
   :focus-visible {
     outline: 2px solid var(--color-brand-blue);
     outline-offset: 2px;
-  }
-}
-
-@utility no-scrollbar {
-  scrollbar-width: none;
-  &::-webkit-scrollbar {
-    display: none;
   }
 }
 

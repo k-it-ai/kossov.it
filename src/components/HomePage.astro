@@ -13,7 +13,7 @@ const { lang } = Astro.props;
 const meta = homeMeta[lang];
 ---
 
-<Base lang={lang} path="/" title={meta.title} description={meta.description} keywords={meta.keywords} locale={meta.locale} langRedirect={lang === 'en'}>
+<Base lang={lang} path="/" title={meta.title} description={meta.description} locale={meta.locale} langRedirect={lang === 'en'}>
   <link slot="head" rel="preload" as="image" href={asset('/hero-poster.webp')} fetchpriority="high" />
   <Hero lang={lang} />
   <Services lang={lang} />

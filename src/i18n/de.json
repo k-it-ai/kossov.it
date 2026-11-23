@@ -90,9 +90,7 @@
     "skip": "Zum Inhalt springen",
     "menuOpen": "Menü öffnen",
     "menuClose": "Menü schließen",
-    "home": "Startseite",
-    "cube": "Dekorativer 3D-Würfel",
-    "process": "So arbeiten wir"
+    "home": "Startseite"
   },
   "notFound": {
     "text": "Seite nicht gefunden",
