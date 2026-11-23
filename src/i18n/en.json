@@ -21,16 +21,16 @@
         "text": "Setup, updates and fast help for Mac, Windows, iPhone, Android and printers. New team members are ready to go from day one."
       },
       "network": {
-        "title": "Network & Wi-Fi",
-        "text": "Reliable internet in every room, secure remote access via VPN, and a router you never have to think about again."
+        "title": "Network & servers",
+        "text": "Reliable Wi-Fi in every room, secure remote access via VPN and your own Linux servers for your files and internal services."
       },
       "email": {
         "title": "Email & collaboration",
         "text": "Microsoft 365, Google Workspace or open source like Nextcloud: email on your own domain, shared calendars and files. Independent of big US providers, if you prefer."
       },
-      "servers": {
-        "title": "Servers, hosting & websites",
-        "text": "Your own Linux servers or a hosting package at Strato, IONOS and the like: domains, websites and servers, set up and maintained."
+      "web": {
+        "title": "Websites & hosting",
+        "text": "We design and build your website and take care of domain and hosting, whether at Strato, IONOS & co. or on your own server."
       },
       "security": {
         "title": "Security & backup",
@@ -76,7 +76,7 @@
     "subtitle": "Tell us briefly what you need. We’ll get back to you as soon as possible.",
     "name": "Name",
     "message": "Message",
-    "submit": "Continue to email",
+    "submit": "Send by email",
     "how": "Opens your email app with the message ready to send.",
     "direct": "Or write directly to",
     "privacy": "Privacy",
