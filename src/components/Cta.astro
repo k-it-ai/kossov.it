@@ -1,0 +1,14 @@
+---
+import { useT } from '../i18n';
+interface Props { lang: 'en' | 'de' | 'ru' }
+const t = useT(Astro.props.lang);
+---
+
+<section class="bg-linear-to-r from-brand-blue-deep to-brand-blue-strong px-4 py-12 sm:px-6">
+  <div class="mx-auto flex max-w-2xl flex-col items-center gap-6 text-center">
+    <h2 class="text-xl font-semibold tracking-tight text-balance text-white sm:text-2xl">{t('cta.message')}</h2>
+    <a href="#contact" class="inline-flex min-h-11 items-center rounded-lg bg-white px-5 py-2.5 font-semibold text-brand-blue-strong transition-colors hover:bg-gray-100">
+      {t('cta.buttonText')}
+    </a>
+  </div>
+</section>

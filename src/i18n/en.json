@@ -1,0 +1,101 @@
+{
+  "header": {
+    "services": "Services",
+    "process": "How we work",
+    "contact": "Contact",
+    "home": "Home"
+  },
+  "hero": {
+    "title": "Your IT shouldn't slow you down.",
+    "subtitle": "We handle infrastructure, security, and support — so you can focus on what matters: your business. Modern technology, forward-thinking care, no surprises on your invoice. Based in Munich, supporting businesses worldwide.",
+    "ctaGetQuote": "Get in touch",
+    "ctaAboutUs": "See how we work"
+  },
+  "services": {
+    "eyebrow": "What we do",
+    "title": "IT that just works. Backed by people who care.",
+    "intro": "From laptops to servers, from Wi-Fi to AI: we take care of everything your business needs in IT. Mac or Windows, iPhone or Android, one office or many.",
+    "items": {
+      "devices": {
+        "title": "Devices & workstations",
+        "text": "Setup, updates and fast help for Mac, Windows, iPhone, Android and printers. New team members are ready to go from day one."
+      },
+      "network": {
+        "title": "Network & Wi-Fi",
+        "text": "Reliable internet in every room, secure remote access via VPN, and a router you never have to think about again."
+      },
+      "email": {
+        "title": "Email & collaboration",
+        "text": "Microsoft 365, Google Workspace or open source like Nextcloud: email on your own domain, shared calendars and files. Independent of big US providers, if you prefer."
+      },
+      "servers": {
+        "title": "Servers, hosting & websites",
+        "text": "Your own Linux servers or a hosting package at Strato, IONOS and the like: domains, websites and servers, set up and maintained."
+      },
+      "security": {
+        "title": "Security & backup",
+        "text": "Password managers, two-factor sign-in, backups and malware protection, so a mistake or an attack doesn’t turn into a crisis."
+      },
+      "ai": {
+        "title": "AI at work",
+        "text": "We show your team where AI really saves time, set up ChatGPT, Claude or Copilot with privacy in mind, and automate tedious routine tasks."
+      }
+    },
+    "cta": "Get in touch"
+  },
+  "process": {
+    "title": "One point of contact for all your IT",
+    "intro": "New laptop, Wi-Fi trouble or an AI project: you always talk to the same people. We give honest advice, source the right hardware and software if you like, and are there fast when something breaks.",
+    "steps": [
+      {
+        "label": "Step 1",
+        "title": "Get to know each other",
+        "text": "A free conversation: what do you use, what bugs you, what should get better? Afterwards you know where you stand, with no obligation."
+      },
+      {
+        "label": "Step 2",
+        "title": "Inventory & setup",
+        "text": "We document devices, accounts and licenses, bring everything up to a secure standard and set up what’s missing."
+      },
+      {
+        "label": "Step 3",
+        "title": "Support & care",
+        "text": "We stay your point of contact: quick help when something goes wrong, honest advice before every purchase and documentation that’s always up to date."
+      }
+    ]
+  },
+  "clients": {
+    "title": "Our clients"
+  },
+  "cta": {
+    "message": "Good IT is invisible. You don't think about it — it just works. That's what we deliver.",
+    "buttonText": "Request a free call"
+  },
+  "contact": {
+    "title": "Let's talk.",
+    "subtitle": "Tell us briefly what you need. We’ll get back to you as soon as possible.",
+    "name": "Name",
+    "message": "Message",
+    "submit": "Continue to email",
+    "how": "Opens your email app with the message ready to send.",
+    "direct": "Or write directly to",
+    "privacy": "Privacy",
+    "subject": "Enquiry via kossov.it"
+  },
+  "footer": {
+    "copyright": "All rights reserved.",
+    "legal": "Legal notice & privacy"
+  },
+  "a11y": {
+    "skip": "Skip to content",
+    "menuOpen": "Open menu",
+    "menuClose": "Close menu",
+    "home": "Home",
+    "cube": "Decorative 3D cube",
+    "process": "How we work"
+  },
+  "notFound": {
+    "text": "Page not found",
+    "link": "Go back home"
+  }
+}

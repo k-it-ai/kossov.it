@@ -1,0 +1,23 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from './Hero.astro';
+import Services from './Services.astro';
+import Process from './Process.astro';
+import Clients from './Clients.astro';
+import Cta from './Cta.astro';
+import { homeMeta } from '../i18n/meta.js';
+import { asset } from '../i18n';
+
+interface Props { lang: 'en' | 'de' | 'ru' }
+const { lang } = Astro.props;
+const meta = homeMeta[lang];
+---
+
+<Base lang={lang} path="/" title={meta.title} description={meta.description} keywords={meta.keywords} locale={meta.locale} langRedirect={lang === 'en'}>
+  <link slot="head" rel="preload" as="image" href={asset('/hero-poster.webp')} fetchpriority="high" />
+  <Hero lang={lang} />
+  <Services lang={lang} />
+  <Process lang={lang} />
+  <Clients lang={lang} />
+  <Cta lang={lang} />
+</Base>

@@ -1,0 +1,21 @@
+---
+import Base from '../layouts/Base.astro';
+import En from './legal/en.astro';
+import De from './legal/de.astro';
+import Ru from './legal/ru.astro';
+import { homeMeta, legalMeta } from '../i18n/meta.js';
+
+interface Props { lang: 'en' | 'de' | 'ru' }
+const { lang } = Astro.props;
+const meta = legalMeta[lang];
+const Content = { en: En, de: De, ru: Ru }[lang];
+---
+
+<!-- Legal notice + privacy: reachable for visitors, hidden from search engines and AI crawlers. -->
+<Base lang={lang} path="/privacy/" title={meta.title} description={meta.description} locale={homeMeta[lang].locale} noindex>
+  <div class="bg-white px-4 pt-28 pb-16 sm:px-6 sm:pb-24 lg:px-8">
+    <div class="mx-auto max-w-3xl leading-7 text-gray-700">
+      <Content />
+    </div>
+  </div>
+</Base>

@@ -1,0 +1,67 @@
+---
+import { link, useT } from '../i18n';
+import Email from './Email.astro';
+interface Props { lang: 'en' | 'de' | 'ru' }
+const { lang } = Astro.props;
+const t = useT(lang);
+const privacy = `${link(lang, '/privacy/')}${lang === 'de' ? '#datenschutz' : '#privacy-policy'}`;
+const input =
+  'block w-full rounded-lg border-0 px-3.5 py-2.5 text-ink shadow-xs ring-1 ring-gray-300 ring-inset placeholder:text-gray-400 focus:ring-2 focus:ring-brand-blue focus:outline-none focus:ring-inset data-[invalid]:ring-2 data-[invalid]:ring-red-500';
+const label = 'block text-sm font-semibold text-ink';
+---
+
+<section id="contact" class="scroll-mt-16 bg-white py-16 sm:py-24">
+  <div class="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8">
+    <div class="text-center">
+      <h2 class="text-3xl font-bold tracking-tight text-ink sm:text-4xl">{t('contact.title')}</h2>
+      <p class="mt-4 text-lg leading-8 text-gray-600">{t('contact.subtitle')}</p>
+    </div>
+
+    <!--
+      No data is sent anywhere: submitting opens the visitor's own email app
+      with a pre-filled message (mailto link); the address is assembled in the browser.
+    -->
+    <form class="mt-10 space-y-6" novalidate data-contact data-user="hi" data-domain="kossov.it" data-subject={t('contact.subject')}>
+      <div>
+        <label for="name" class={label}>{t('contact.name')}</label>
+        <input id="name" name="name" type="text" autocomplete="name" required minlength="2" maxlength="100" class:list={['mt-2', input]} />
+      </div>
+      <div>
+        <label for="message" class={label}>{t('contact.message')}</label>
+        <textarea id="message" name="message" rows="5" required minlength="10" maxlength="5000" class:list={['mt-2', input]}></textarea>
+      </div>
+      <button type="submit" class="btn-primary w-full">{t('contact.submit')}</button>
+    </form>
+
+    <p class="mt-5 text-center text-sm leading-6 text-gray-500">
+      {t('contact.how')} {t('contact.direct')} <Email class="font-semibold text-brand-blue-strong hover:underline" />
+      <span aria-hidden="true" class="mx-1.5">·</span>
+      <a href={privacy} class="hover:text-gray-700 hover:underline">{t('contact.privacy')}</a>
+    </p>
+  </div>
+</section>
+
+<script>
+  const form = document.querySelector<HTMLFormElement>('[data-contact]');
+  if (form) {
+    const field = (name: string) => form.elements.namedItem(name) as HTMLInputElement;
+    form.addEventListener('input', (e) => (e.target as HTMLElement).removeAttribute('data-invalid'));
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = field('name').value.trim();
+      const message = field('message').value.trim();
+      const invalid = [
+        name.length < 2 && 'name',
+        message.length < 10 && 'message',
+      ].filter(Boolean) as string[];
+      invalid.forEach((n) => field(n).setAttribute('data-invalid', ''));
+      if (invalid.length) {
+        field(invalid[0]).focus();
+        return;
+      }
+      const subject = `${form.dataset.subject} – ${name}`;
+      const body = `${message}\n\n${name}`;
+      window.location.href = `mailto:${form.dataset.user}@${form.dataset.domain}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    });
+  }
+</script>

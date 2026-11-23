@@ -1,0 +1,135 @@
+---
+import { LANGS, asset, link, useT } from '../i18n';
+
+interface Props {
+  lang: 'en' | 'de' | 'ru';
+  path: string;
+}
+const { lang, path } = Astro.props;
+const t = useT(lang);
+const home = link(lang, '/');
+const left = [
+  { href: home, label: t('header.home') },
+  { href: `${home}#services`, label: t('header.services') },
+];
+const right = [
+  { href: `${home}#process`, label: t('header.process') },
+  { href: `${home}#contact`, label: t('header.contact') },
+];
+const flags = {
+  en: { src: '/flags/uk.svg', name: 'English', label: 'Switch to English' },
+  de: { src: '/flags/germany.svg', name: 'Deutsch', label: 'Auf Deutsch wechseln' },
+  ru: { src: '/flags/russia.svg', name: 'Русский', label: 'Переключить на русский' },
+};
+const languages = LANGS.map((l) => ({ code: l, href: link(l, path), active: l === lang, ...flags[l], src: asset(flags[l].src) }));
+const logo = asset('/brand/logo-mark.svg');
+const current = languages.find((l) => l.active)!;
+const navLink = 'w-[120px] text-center whitespace-nowrap text-ink transition-colors hover:text-brand-blue-strong';
+---
+
+<header class="site-header fixed inset-x-0 top-0 z-50 border-b border-transparent bg-white/85 backdrop-blur-md transition-[border-color,box-shadow] duration-300" data-header>
+  <nav class="relative mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:justify-center lg:px-8">
+    <!-- Mobile: logo left -->
+    <a href={home} aria-label={t('a11y.home')} class="lg:hidden">
+      <img src={logo} alt="kossov.it" width="25" height="40" class="h-10 w-auto" />
+    </a>
+
+    <!-- Desktop: navigation with the logo in the middle -->
+    <div class="hidden items-center justify-center gap-x-8 lg:flex">
+      {left.map((item) => <a href={item.href} class={navLink}>{item.label}</a>)}
+      <a href={home} aria-label={t('a11y.home')} class="shrink-0">
+        <img src={logo} alt="kossov.it" width="25" height="40" class="h-10 w-auto" />
+      </a>
+      {right.map((item) => <a href={item.href} class={navLink}>{item.label}</a>)}
+    </div>
+
+    <!-- Language dropdown (flag of the current language) -->
+    <div class="ml-auto flex items-center gap-1 lg:absolute lg:right-8 lg:ml-0">
+      <button
+        type="button"
+        popovertarget="lang-menu"
+        class="inline-flex min-h-11 items-center gap-1.5 rounded-lg px-2 hover:bg-gray-100"
+        aria-label={`${current.name} – Sprache / Language / Язык`}
+        data-lang-button
+      >
+        <img src={current.src} alt="" width="24" height="24" class="block h-6 w-6" />
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" class="h-4 w-4 text-gray-500"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"></path></svg>
+      </button>
+    <!-- Mobile: menu button -->
+    <button
+      type="button"
+      popovertarget="mobile-menu"
+      class="-mr-2 ml-1 inline-flex min-h-11 min-w-11 items-center justify-center rounded-lg stroke-gray-900 hover:bg-gray-100 lg:hidden"
+      aria-label={t('a11y.menuOpen')}
+    >
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" class="h-6 w-6"><path d="M5 6h14M5 18h14M5 12h14" stroke-width="2" stroke-linecap="round"></path></svg>
+    </button>
+    </div>
+  </nav>
+</header>
+
+<!-- Language menu (native popover, placed under its button by the script below) -->
+<div id="lang-menu" popover class="lang-menu m-0 rounded-xl border border-gray-200 bg-white p-1 shadow-lg" data-lang-menu>
+  {languages.map((l) => (
+    <a
+      href={l.href}
+      hreflang={l.code}
+      lang={l.code}
+      aria-label={l.label}
+      aria-current={l.active ? 'true' : undefined}
+      class:list={['flex items-center gap-2.5 rounded-lg py-1.5 pr-4 pl-2 text-sm whitespace-nowrap text-ink hover:bg-gray-100', l.active && 'bg-gray-50 font-semibold']}
+      data-lang={l.code}
+    >
+      <img src={l.src} alt="" width="20" height="20" class="block h-5 w-5" />
+      {l.name}
+    </a>
+  ))}
+</div>
+
+<!-- Mobile menu (native popover) -->
+<div id="mobile-menu" popover class="fixed inset-x-0 top-0 bottom-auto m-0 w-full max-w-none rounded-b-2xl border-0 bg-gray-50 px-4 pt-3 pb-6 text-ink shadow-2xl shadow-gray-900/20 sm:px-6">
+  <div class="flex h-10 items-center justify-between">
+    <a href={home} aria-label={t('a11y.home')} data-menu-link>
+      <img src={logo} alt="kossov.it" width="25" height="40" class="h-10 w-auto" />
+    </a>
+    <button type="button" popovertarget="mobile-menu" popovertargetaction="hide" class="-mr-2 inline-flex min-h-11 min-w-11 items-center justify-center rounded-lg stroke-gray-900 hover:bg-gray-200/50" aria-label={t('a11y.menuClose')}>
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" class="h-6 w-6"><path d="M17 14l-5-5-5 5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+    </button>
+  </div>
+  <div class="mt-4 space-y-1">
+    {[...left, ...right].map((item) => (
+      <a href={item.href} class="block rounded-lg py-2.5 text-lg text-gray-700" data-menu-link>{item.label}</a>
+    ))}
+  </div>
+</div>
+
+<script>
+  // Thin line under the header once the page is scrolled.
+  const header = document.querySelector('[data-header]');
+  const onScroll = () => header?.classList.toggle('is-scrolled', window.scrollY > 8);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // Close the mobile menu after following one of its links.
+  const menu = document.getElementById('mobile-menu');
+  menu?.querySelectorAll('[data-menu-link]').forEach((a) => a.addEventListener('click', () => menu.hidePopover?.()));
+
+  // Language menu: place it right under its button.
+  const langMenu = document.querySelector<HTMLElement>('[data-lang-menu]');
+  const langButton = document.querySelector<HTMLElement>('[data-lang-button]');
+  langMenu?.addEventListener('beforetoggle', (e) => {
+    if ((e as ToggleEvent).newState !== 'open' || !langButton) return;
+    const r = langButton.getBoundingClientRect();
+    langMenu.style.top = `${r.bottom + 4}px`;
+    langMenu.style.right = `${Math.max(8, window.innerWidth - r.right)}px`;
+  });
+
+  // Remember an explicit language choice (it overrides the browser language).
+  document.querySelectorAll<HTMLElement>('[data-lang]').forEach((a) =>
+    a.addEventListener('click', () => {
+      try {
+        localStorage.setItem('lang', a.dataset.lang!);
+      } catch {}
+    }),
+  );
+</script>

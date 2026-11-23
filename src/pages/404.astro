@@ -1,0 +1,22 @@
+---
+import Base from '../layouts/Base.astro';
+import { link, useT } from '../i18n';
+const langs = ['en', 'de', 'ru'] as const;
+---
+
+<Base lang="en" path="/404/" title="404 — kossov.it" description="Page not found" noindex>
+  <div class="flex min-h-[60vh] items-center justify-center px-6 pt-28">
+    <div class="text-center">
+      <h1 class="text-4xl font-bold tracking-tight text-ink">404</h1>
+      {langs.map((l) => {
+        const t = useT(l);
+        return (
+          <p class="mt-4 text-lg text-gray-600" lang={l}>
+            {t('notFound.text')} ·{' '}
+            <a href={link(l, '/')} class="font-semibold text-brand-blue-strong hover:underline">{t('notFound.link')}</a>
+          </p>
+        );
+      })}
+    </div>
+  </div>
+</Base>

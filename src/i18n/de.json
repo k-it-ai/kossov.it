@@ -1,0 +1,101 @@
+{
+  "header": {
+    "services": "Leistungen",
+    "process": "So arbeiten wir",
+    "contact": "Kontakt",
+    "home": "Startseite"
+  },
+  "hero": {
+    "title": "Ihre IT sollte Sie nicht ausbremsen.",
+    "subtitle": "Wir kümmern uns um Infrastruktur, Sicherheit und Support — damit Sie sich auf das konzentrieren, was zählt: Ihr Business. Moderne Technologien, vorausschauende Betreuung, keine Überraschungen auf der Rechnung. Aus München, für Unternehmen weltweit.",
+    "ctaGetQuote": "Kontakt aufnehmen",
+    "ctaAboutUs": "So arbeiten wir"
+  },
+  "services": {
+    "eyebrow": "Was wir machen",
+    "title": "IT, die einfach funktioniert. Mit Menschen, die mitdenken.",
+    "intro": "Vom Laptop bis zum Server, vom WLAN bis zur KI: Wir kümmern uns um alles, was Ihr Unternehmen an IT braucht. Mac oder Windows, iPhone oder Android, ein Büro oder viele Standorte.",
+    "items": {
+      "devices": {
+        "title": "Geräte & Arbeitsplätze",
+        "text": "Einrichtung, Updates und schnelle Hilfe für Mac, Windows, iPhone, Android und Drucker. Neue Mitarbeitende sind vom ersten Tag an startklar."
+      },
+      "network": {
+        "title": "Netzwerk & WLAN",
+        "text": "Stabiles Internet in jedem Raum, sicherer Fernzugriff per VPN und ein Router, um den Sie sich nicht mehr kümmern müssen."
+      },
+      "email": {
+        "title": "E-Mail & Zusammenarbeit",
+        "text": "Microsoft 365, Google Workspace oder Open Source wie Nextcloud: E-Mail mit eigener Domain, gemeinsame Kalender und Dateien. Auf Wunsch unabhängig von großen US-Anbietern."
+      },
+      "servers": {
+        "title": "Server, Hosting & Websites",
+        "text": "Eigene Linux-Server oder Ihr Hosting-Paket bei Strato, IONOS & Co.: Domains, Websites und Server, eingerichtet und gepflegt."
+      },
+      "security": {
+        "title": "Sicherheit & Datensicherung",
+        "text": "Passwort-Manager, Zwei-Faktor-Anmeldung, Backups und Virenschutz. Damit ein Fehler oder Angriff kein Drama wird."
+      },
+      "ai": {
+        "title": "KI im Arbeitsalltag",
+        "text": "Wir zeigen Ihrem Team, wo KI wirklich Zeit spart, richten ChatGPT, Claude oder Copilot datenschutzkonform ein und automatisieren lästige Routinen."
+      }
+    },
+    "cta": "Kontakt aufnehmen"
+  },
+  "process": {
+    "title": "Ein Ansprechpartner für Ihre gesamte IT",
+    "intro": "Ob neuer Laptop, WLAN-Problem oder KI-Projekt: Sie wenden sich immer an dieselbe Stelle. Wir beraten ehrlich, besorgen auf Wunsch die passende Hardware und Software und sind schnell da, wenn etwas klemmt.",
+    "steps": [
+      {
+        "label": "Schritt 1",
+        "title": "Kennenlernen",
+        "text": "Ein kostenloses Gespräch: Was nutzen Sie, was nervt, was soll besser werden? Danach wissen Sie, woran Sie sind, ganz ohne Verpflichtung."
+      },
+      {
+        "label": "Schritt 2",
+        "title": "Bestandsaufnahme & Einrichtung",
+        "text": "Wir dokumentieren Geräte, Konten und Lizenzen, bringen alles auf einen sicheren Stand und richten ein, was fehlt."
+      },
+      {
+        "label": "Schritt 3",
+        "title": "Support & Betreuung",
+        "text": "Wir bleiben Ihr Ansprechpartner: schnelle Hilfe bei Problemen, ehrliche Beratung vor jeder Anschaffung und eine Dokumentation, die immer aktuell ist."
+      }
+    ]
+  },
+  "clients": {
+    "title": "Unsere Kunden"
+  },
+  "cta": {
+    "message": "Gute IT ist unsichtbar. Man denkt nicht darüber nach — sie funktioniert einfach. Genau das liefern wir.",
+    "buttonText": "Kostenloses Gespräch anfragen"
+  },
+  "contact": {
+    "title": "Lassen Sie uns sprechen.",
+    "subtitle": "Schreiben Sie kurz, worum es geht. Wir melden uns schnellstmöglich.",
+    "name": "Name",
+    "message": "Nachricht",
+    "submit": "Weiter zur E-Mail",
+    "how": "Öffnet Ihr E-Mail-Programm mit der fertigen Nachricht.",
+    "direct": "Oder direkt an",
+    "privacy": "Datenschutz",
+    "subject": "Anfrage über kossov.it"
+  },
+  "footer": {
+    "copyright": "Alle Rechte vorbehalten.",
+    "legal": "Impressum & Datenschutz"
+  },
+  "a11y": {
+    "skip": "Zum Inhalt springen",
+    "menuOpen": "Menü öffnen",
+    "menuClose": "Menü schließen",
+    "home": "Startseite",
+    "cube": "Dekorativer 3D-Würfel",
+    "process": "So arbeiten wir"
+  },
+  "notFound": {
+    "text": "Seite nicht gefunden",
+    "link": "Zur Startseite"
+  }
+}

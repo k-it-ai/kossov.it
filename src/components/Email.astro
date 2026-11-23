@@ -1,0 +1,16 @@
+---
+// Renders the contact address without putting it into the HTML as plain text,
+// so address-harvesting bots can't read it. Browsers turn it into a normal link.
+interface Props { class?: string }
+const { class: className } = Astro.props;
+---
+
+<a class:list={['whitespace-nowrap', className]} data-mail="hi" data-domain="kossov.it">hi (at) kossov.it</a>
+
+<script>
+  document.querySelectorAll<HTMLAnchorElement>('[data-mail]').forEach((a) => {
+    const address = `${a.dataset.mail}@${a.dataset.domain}`;
+    a.href = `mailto:${address}`;
+    a.textContent = address;
+  });
+</script>

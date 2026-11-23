@@ -1,0 +1,60 @@
+---
+import { Image } from 'astro:assets';
+import { useT } from '../i18n';
+import telnet from '../assets/clients/telnet.webp';
+import changthai from '../assets/clients/changthai.png';
+import physioimpuls from '../assets/clients/physioimpuls.png';
+import n25 from '../assets/clients/n25.svg';
+import hws from '../assets/clients/hws.svg';
+import helgewalter from '../assets/clients/helgewalter.svg';
+
+interface Props { lang: 'en' | 'de' | 'ru' }
+const t = useT(Astro.props.lang);
+
+// Add new clients here. The strip scrolls endlessly and adapts to any number of logos.
+// `size` evens out how heavy each logo looks (Tailwind height classes).
+const logos = [
+  { src: telnet, alt: 'Telnet', href: 'https://www.telnet-muenchen.de/', size: 'h-9 sm:h-11' },
+  { src: changthai, alt: 'Chang Thai Ambiente', href: 'https://chang-thai-ambiente.de/', size: 'h-14 sm:h-16' },
+  { src: physioimpuls, alt: 'Physioimpuls Westpark', href: 'https://westpark.physioimpuls.de/de/', size: 'h-11 sm:h-14' },
+  { src: n25, alt: 'Therapie N25', href: 'https://www.therapie-n25.de/', size: 'h-6 sm:h-7' },
+  { src: hws, alt: 'Hamburger Werbeservice GmbH', href: 'https://hh-hws.de/', size: 'h-8 sm:h-10' },
+  { src: helgewalter, alt: 'Helge Walter', href: 'https://helgewalter.de/', size: 'h-5 sm:h-6' },
+];
+
+// Each half of the track holds at least 8 logos so it is always wider than the screen;
+// the second half is an exact copy, which makes the loop seamless.
+const half = Array.from({ length: Math.ceil(8 / logos.length) }, () => logos).flat();
+const seconds = half.length * 4;
+---
+
+<section id="clients" class="scroll-mt-16 bg-white py-16 sm:py-24">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <h2 class="text-center text-3xl font-bold tracking-tight text-ink sm:text-4xl">{t('clients.title')}</h2>
+  </div>
+
+  <div class="marquee mt-12 overflow-hidden sm:mt-16" data-marquee data-seconds={seconds}>
+    <ul class="marquee-track flex w-max items-center">
+      {[0, 1].map((copy) =>
+        half.map((logo, i) => {
+          const hidden = copy === 1 || i >= logos.length;
+          return (
+            <li class="px-8 sm:px-12" aria-hidden={hidden ? 'true' : undefined}>
+              <a href={logo.href} target="_blank" rel="noopener noreferrer" tabindex={hidden ? -1 : undefined} class="block opacity-80 transition-opacity hover:opacity-100">
+                <Image src={logo.src} alt={hidden ? '' : logo.alt} height={64} densities={[1, 2]} loading="eager" decoding="async" class:list={['w-auto max-w-[170px] object-contain sm:max-w-[200px]', logo.size]} />
+              </a>
+            </li>
+          );
+        }),
+      )}
+    </ul>
+  </div>
+</section>
+
+<script>
+  // Scroll speed scales with the number of logos so it always feels the same.
+  document.querySelectorAll<HTMLElement>('[data-marquee]').forEach((el) => {
+    const track = el.firstElementChild as HTMLElement | null;
+    if (track) track.style.animationDuration = `${el.dataset.seconds}s`;
+  });
+</script>

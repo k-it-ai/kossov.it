@@ -1,0 +1,258 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: var(--font-source-sans), system-ui, sans-serif;
+
+  /* Brand palette */
+  --color-ink: #020202;
+  --color-brand-cyan: #2ba9d3;
+  --color-brand-blue: #2a7eb4;
+  --color-brand-blue-strong: #2672a3; /* AA contrast for white text / links */
+  --color-brand-blue-deep: #1f5f8b;
+  --color-brand-red: #da2128;
+  --color-brand-red-dark: #981a26;
+  --color-night: #181818;
+
+  --animate-spin-slower: spin 6s linear infinite;
+}
+
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    /* Source Sans 3 runs small; 17px base keeps text comfortable to read. */
+    font-size: 106.25%;
+  }
+
+  body {
+    color: var(--color-ink);
+    background: #fff;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brand-blue);
+    outline-offset: 2px;
+  }
+}
+
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* ── Buttons ────────────────────────────────────────────── */
+@utility btn-primary {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-lg);
+  background: var(--color-brand-blue-strong);
+  padding: 0.625rem 1.25rem;
+  font-weight: 600;
+  color: #fff;
+  transition: background-color 0.2s;
+  &:hover {
+    background: var(--color-brand-blue-deep);
+  }
+}
+@utility btn-ghost {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 0.25rem;
+  font-weight: 600;
+  color: var(--color-brand-blue-strong);
+  &:hover {
+    color: var(--color-brand-blue-deep);
+  }
+}
+
+/* Language dropdown: fixed position, set by script under its button. */
+.lang-menu {
+  position: fixed;
+  inset: auto;
+}
+
+/* ── Hero video ─────────────────────────────────────────── */
+/* Multiply makes the video's white background melt into the page, so no box
+   shows even when a browser renders video white a shade off. Safari: no
+   controls, frame or outline, ever. */
+.hero-video {
+  mix-blend-mode: multiply;
+  background: transparent;
+  border: 0;
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.hero-video::-webkit-media-controls,
+.hero-video::-webkit-media-controls-panel,
+.hero-video::-webkit-media-controls-start-playback-button,
+.hero-video::-webkit-media-controls-enclosure {
+  display: none !important;
+  -webkit-appearance: none;
+}
+
+/* ── Header ─────────────────────────────────────────────── */
+.site-header.is-scrolled {
+  border-bottom-color: var(--color-gray-200);
+  box-shadow: 0 1px 12px rgb(0 0 0 / 0.04);
+}
+
+/* Mobile menu: native popover with enter/exit transitions */
+#mobile-menu {
+  opacity: 0;
+  transform: translateY(-32px);
+  transition:
+    opacity 0.2s,
+    transform 0.2s,
+    overlay 0.2s allow-discrete,
+    display 0.2s allow-discrete;
+}
+#mobile-menu:popover-open {
+  opacity: 1;
+  transform: none;
+}
+@starting-style {
+  #mobile-menu:popover-open {
+    opacity: 0;
+    transform: translateY(-32px);
+  }
+}
+#mobile-menu::backdrop {
+  background: rgb(209 213 219 / 0);
+  backdrop-filter: blur(0);
+  transition:
+    background 0.2s,
+    backdrop-filter 0.2s,
+    overlay 0.2s allow-discrete,
+    display 0.2s allow-discrete;
+}
+#mobile-menu:popover-open::backdrop {
+  background: rgb(209 213 219 / 0.6);
+  backdrop-filter: blur(4px);
+}
+@starting-style {
+  #mobile-menu:popover-open::backdrop {
+    background: rgb(209 213 219 / 0);
+    backdrop-filter: blur(0);
+  }
+}
+
+/* ── Services: globe with labelled pills ──────────────────── */
+/* Three pills on each side, anchored at their inner edge so long labels never
+   run into the globe. Index order = src/data/services.js. */
+.svc-pill {
+  top: 50%;
+  animation: svc-float 6s ease-in-out infinite;
+}
+/* Hold still under the mouse, so the hover state can't switch on and off. */
+.svc-pill:hover {
+  animation-play-state: paused;
+}
+/* Safari: give every pill its own fixed compositing layer, so hovering one
+   never makes the others (and their shadows) redraw and blink. */
+.svc-pill {
+  will-change: transform;
+  backface-visibility: hidden;
+}
+/* Hover glow as a separate overlay that only fades (no shadow repaint). */
+.pill-link {
+  position: relative;
+}
+.pill-link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow:
+    0 10px 28px rgb(42 126 180 / 0.28),
+    0 0 0 1px rgb(43 169 211 / 0.6);
+  opacity: 0;
+  transition: opacity 0.2s;
+  pointer-events: none;
+}
+.pill-link:hover::after {
+  opacity: 1;
+}
+.svc-pos-0, .svc-pos-1, .svc-pos-2 { left: calc(50% + 170px); --dir: 1; }
+.svc-pos-3, .svc-pos-4, .svc-pos-5 { right: calc(50% + 170px); --dir: -1; }
+.svc-pos-0, .svc-pos-5 { --row: -150px; }
+.svc-pos-1, .svc-pos-4 { --row: 0px; --nudge: 48px; }
+.svc-pos-2, .svc-pos-3 { --row: 150px; }
+.svc-pos-1 { animation-delay: -1.5s; }
+.svc-pos-2 { animation-delay: -3s; }
+.svc-pos-3 { animation-delay: -4.5s; }
+.svc-pos-4 { animation-delay: -2s; }
+.svc-pos-5 { animation-delay: -5s; }
+/* Card highlighted after clicking its pill */
+.svc-card {
+  transition: background-color 0.6s, box-shadow 0.6s;
+}
+.svc-card.is-highlighted {
+  background-color: rgb(43 169 211 / 0.1);
+  box-shadow: 0 0 0 2px rgb(43 169 211 / 0.45);
+}
+
+@keyframes svc-float {
+  0%, 100% { transform: translate(calc(var(--dir) * var(--nudge, 0px)), calc(-50% + var(--row))); }
+  50% { transform: translate(calc(var(--dir) * var(--nudge, 0px)), calc(-50% + var(--row) - 6px)); }
+}
+
+
+
+/* ── Clients: endless logo strip ───────────────────────── */
+.marquee {
+  mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+}
+.marquee-track {
+  animation: marquee 32s linear infinite;
+}
+.marquee:hover .marquee-track,
+.marquee:focus-within .marquee-track {
+  animation-play-state: paused;
+}
+@keyframes marquee {
+  to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  /* No movement: show each client logo once, wrapped and centred. */
+  .marquee {
+    mask-image: none;
+  }
+  .marquee-track {
+    animation: none;
+    width: auto;
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 2rem;
+  }
+  .marquee-track [aria-hidden='true'] {
+    display: none;
+  }
+  *,
+  ::before,
+  ::after,
+  ::backdrop {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
