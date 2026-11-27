@@ -21,8 +21,6 @@ const { lang, path, title, description, locale = 'en_US', langRedirect = false }
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const t = useT(lang);
 const canonical = urlFor(lang, path);
-
-
 ---
 
 <!doctype html>
@@ -56,10 +54,6 @@ const canonical = urlFor(lang, path);
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="kossov.it logo" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@kossov_it" />
-    <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={`${SITE}/og-image.png`} />
 
     <Font cssVariable="--font-source-sans" preload={[{ subset: lang === 'ru' ? 'cyrillic' : 'latin' }]} />
     {langRedirect && (

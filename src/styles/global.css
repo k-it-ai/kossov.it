@@ -12,7 +12,6 @@
   --color-brand-red: #da2128;
   --color-brand-red-dark: #981a26;
   --color-night: #181818;
-
 }
 
 @layer base {
@@ -150,16 +149,14 @@
 .svc-pill {
   top: 50%;
   animation: svc-float 6s ease-in-out infinite;
+  /* Safari: give every pill its own fixed compositing layer, so hovering one
+     never makes the others (and their shadows) redraw and blink. */
+  will-change: transform;
+  backface-visibility: hidden;
 }
 /* Hold still under the mouse, so the hover state can't switch on and off. */
 .svc-pill:hover {
   animation-play-state: paused;
-}
-/* Safari: give every pill its own fixed compositing layer, so hovering one
-   never makes the others (and their shadows) redraw and blink. */
-.svc-pill {
-  will-change: transform;
-  backface-visibility: hidden;
 }
 /* Hover glow as a separate overlay that only fades (no shadow repaint). */
 .pill-link {
@@ -203,8 +200,6 @@
   0%, 100% { transform: translate(calc(var(--dir) * var(--nudge, 0px)), calc(-50% + var(--row))); }
   50% { transform: translate(calc(var(--dir) * var(--nudge, 0px)), calc(-50% + var(--row) - 6px)); }
 }
-
-
 
 /* ── Clients: endless logo strip ───────────────────────── */
 .marquee {
