@@ -136,7 +136,7 @@ export function decodeMesh(buffer) {
 
 /** Create the renderer. Returns null when WebGL is unavailable. */
 export function createRenderer(canvas, mesh) {
-  const opts = { antialias: true, alpha: true, premultipliedAlpha: true, powerPreference: 'high-performance' };
+  const opts = { antialias: true, alpha: true, premultipliedAlpha: true };
   const gl = canvas.getContext('webgl2', opts) || canvas.getContext('webgl', opts);
   if (!gl) return null;
 
@@ -173,15 +173,12 @@ export function createRenderer(canvas, mesh) {
   gl.enable(gl.CULL_FACE);
   gl.clearColor(0, 0, 0, 0);
 
-  let aspect = 1;
-
   return {
-    gl,
     resize(width, height, dpr) {
       canvas.width = Math.max(1, Math.round(width * dpr));
       canvas.height = Math.max(1, Math.round(height * dpr));
       gl.viewport(0, 0, canvas.width, canvas.height);
-      aspect = width / height;
+      const aspect = width / height;
       const f = 1 / Math.tan(FOV / 2), near = 0.1, far = 1000;
       gl.uniformMatrix4fv(uProjection, false, [
         f / aspect, 0, 0, 0,

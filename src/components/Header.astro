@@ -21,7 +21,9 @@ const flags = {
   de: { src: '/flags/germany.svg', name: 'Deutsch', label: 'Auf Deutsch wechseln' },
   ru: { src: '/flags/russia.svg', name: 'Русский', label: 'Переключить на русский' },
 };
-const languages = LANGS.map((l) => ({ code: l, href: link(l, path), active: l === lang, ...flags[l], src: asset(flags[l].src) }));
+// From the 404 page, switching language leads to that language's homepage.
+const target = path === '/404/' ? '/' : path;
+const languages = LANGS.map((l) => ({ code: l, href: link(l, target), active: l === lang, ...flags[l], src: asset(flags[l].src) }));
 const logo = asset('/brand/logo-mark.svg');
 const current = languages.find((l) => l.active)!;
 const navLink = 'w-[120px] text-center whitespace-nowrap text-ink transition-colors hover:text-brand-blue-strong';
