@@ -6,7 +6,7 @@ export const homeMeta = {
     locale: 'en_US',
   },
   de: {
-    title: 'kossov.it — IT-Service & IT-Betreuung aus München',
+    title: 'kossov.it – IT-Service & IT-Betreuung aus München',
     description: 'Ein Ansprechpartner für Ihre gesamte IT: Geräte, Netzwerk und Server, E-Mail, Websites, Sicherheit und KI. Persönlich, schnell und flexibel. Aus München, für Unternehmen weltweit.',
     locale: 'de_DE',
   },
@@ -19,6 +19,6 @@ export const homeMeta = {
 
 export const legalMeta = {
   en: { title: 'Legal notice & privacy — kossov.it', description: 'Legal notice and privacy policy of kossov.it.' },
-  de: { title: 'Impressum & Datenschutz — kossov.it', description: 'Impressum und Datenschutzerklärung von kossov.it.' },
+  de: { title: 'Impressum & Datenschutz – kossov.it', description: 'Impressum und Datenschutzerklärung von kossov.it.' },
   ru: { title: 'Правовая информация — kossov.it', description: 'Правовая информация и политика конфиденциальности kossov.it.' },
 };
