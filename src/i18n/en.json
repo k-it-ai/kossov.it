@@ -6,8 +6,8 @@
     "home": "Home"
   },
   "hero": {
-    "title": "Your IT shouldn't slow you down.",
-    "subtitle": "We handle infrastructure, security, and support — so you can focus on what matters: your business. Modern technology, forward-thinking care, no surprises on your invoice. Based in Munich, supporting businesses worldwide.",
+    "title": "Your IT shouldn’t slow you down.",
+    "subtitle": "We handle infrastructure, security and support — so you can focus on what matters: your business. Modern technology, forward-thinking care, no surprises on your invoice. Based in Munich, supporting businesses worldwide.",
     "ctaGetQuote": "Get in touch",
     "ctaAboutUs": "See how we work"
   },
@@ -55,7 +55,7 @@
       {
         "label": "Step 2",
         "title": "Inventory & setup",
-        "text": "We document devices, accounts and licenses, bring everything up to a secure standard and set up what’s missing."
+        "text": "We document devices, accounts and licences, bring everything up to a secure standard and set up what’s missing."
       },
       {
         "label": "Step 3",
@@ -68,11 +68,11 @@
     "title": "Our clients"
   },
   "cta": {
-    "message": "Good IT is invisible. You don't think about it — it just works. That's what we deliver.",
+    "message": "Good IT is invisible. You don’t think about it — it just works. That’s what we deliver.",
     "buttonText": "Request a free call"
   },
   "contact": {
-    "title": "Let's talk.",
+    "title": "Let’s talk.",
     "subtitle": "Tell us briefly what you need. We’ll get back to you as soon as possible.",
     "name": "Name",
     "message": "Message",
